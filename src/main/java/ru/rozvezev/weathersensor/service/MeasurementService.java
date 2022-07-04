@@ -12,9 +12,11 @@ import java.util.List;
 public class MeasurementService {
 
     private final MeasurementRepository measurementRepository;
+    private final SensorService sensorService;
 
-    public MeasurementService(MeasurementRepository measurementRepository) {
+    public MeasurementService(MeasurementRepository measurementRepository, SensorService sensorService) {
         this.measurementRepository = measurementRepository;
+        this.sensorService = sensorService;
     }
 
     public List<Measurement> getAll(){
@@ -23,6 +25,8 @@ public class MeasurementService {
 
     @Transactional
     public void add(Measurement measurement) {
+        String name = measurement.getSensor().getName();
+        measurement.getSensor().setId(sensorService.getByName(name).get().getId());
         measurementRepository.save(measurement);
     }
 }

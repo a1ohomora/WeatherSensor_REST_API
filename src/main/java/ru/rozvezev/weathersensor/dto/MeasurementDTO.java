@@ -2,12 +2,8 @@ package ru.rozvezev.weathersensor.dto;
 
 import ru.rozvezev.weathersensor.models.Sensor;
 
-import javax.persistence.Column;
-import javax.persistence.JoinColumn;
-import javax.persistence.ManyToOne;
 import javax.validation.constraints.Max;
 import javax.validation.constraints.Min;
-import javax.validation.constraints.NotEmpty;
 import javax.validation.constraints.NotNull;
 
 public class MeasurementDTO {
@@ -21,7 +17,7 @@ public class MeasurementDTO {
     private Boolean raining;
 
     @NotNull(message = "Sensor field should not be empty")
-    private Sensor sensor;
+    private SensorDTO sensor;
 
     public MeasurementDTO() {}
 
@@ -41,11 +37,11 @@ public class MeasurementDTO {
         this.raining = raining;
     }
 
-    public Sensor getSensor() {
+    public SensorDTO getSensor() {
         return sensor;
     }
 
-    public void setSensor(Sensor sensor) {
+    public void setSensor(SensorDTO sensor) {
         this.sensor = sensor;
     }
 }

@@ -33,7 +33,5 @@ public class MeasurementDTOValidator implements Validator {
         //Check if given name is not in database. Set identifier if sensor is present!
         if (sensorFromDB.isEmpty())
             errors.rejectValue("sensor", "", "Given sensor is not in database");
-        else
-            target.getSensor().setId(sensorFromDB.get().getId());
     }
 }
